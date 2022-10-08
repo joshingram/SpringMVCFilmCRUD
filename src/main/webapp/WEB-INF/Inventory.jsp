@@ -18,7 +18,7 @@
 		<h3>Inventory ID#: ${inv.id}</h3>
 		<ul>
 			<li>Film ID#: ${inv.filmId}</li>
-			<li>Stored ID#: ${inv.storeId}</li>
+			<li>Store ID#: ${inv.storeId}</li>
 			<li>Media condition: ${inv.mediaCondition}</li>
 			<li>Customer's name: ${inv.customerFirstName} ${inv.customerLastName}</li>
 			<li>Customer's address: ${inv.address}</li>

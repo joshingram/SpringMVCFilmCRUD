@@ -89,7 +89,7 @@
 			<c:choose>
 				<c:when test="${fn:contains(film.specialFeatures, 'Commentaries')}">
 					<input type="checkbox" name="specialFeatures" value="Commentaries"
-						selected>Commentaries
+						checked>Commentaries
 				</c:when>
 				<c:otherwise>
 					<input type="checkbox" name="specialFeatures" value="Commentaries">Commentaries
@@ -99,7 +99,7 @@
 				<c:when
 					test="${fn:contains(film.specialFeatures, 'Deleted Scenes')}">
 					<input type="checkbox" name="specialFeatures"
-						value="Deleted Scenes" selected>Deleted Scenes
+						value="Deleted Scenes" checked>Deleted Scenes
 				</c:when>
 				<c:otherwise>
 					<input type="checkbox" name="specialFeatures"
@@ -110,7 +110,7 @@
 				<c:when
 					test="${fn:contains(film.specialFeatures, 'Behind the Scenes')}">
 					<input type="checkbox" name="specialFeatures"
-						value="Behind the Scenes" selected>Behind the Scenes
+						value="Behind the Scenes" checked>Behind the Scenes
 				</c:when>
 				<c:otherwise>
 					<input type="checkbox" name="specialFeatures"
@@ -121,7 +121,7 @@
 		<br> <label for="plainLanguage">Language</label> <select
 			name="plainLanguage">
 			<c:choose>
-				<c:when test="${film.plainLanguage == English}">
+				<c:when test="${film.plainLanguage == 'English'}">
 					<option value="English" selected>English</option>
 				</c:when>
 				<c:otherwise>
@@ -129,7 +129,7 @@
 				</c:otherwise>
 			</c:choose>
 			<c:choose>
-				<c:when test="${film.plainLanguage == Italian}">
+				<c:when test="${film.plainLanguage == 'Italian'}">
 					<option value="Italian" selected>Italian</option>
 				</c:when>
 				<c:otherwise>
@@ -137,7 +137,7 @@
 				</c:otherwise>
 			</c:choose>
 			<c:choose>
-				<c:when test="${film.plainLanguage == Japanese}">
+				<c:when test="${film.plainLanguage == 'Japanese'}">
 					<option value="Japanese" selected>Japanese</option>
 				</c:when>
 				<c:otherwise>
@@ -145,7 +145,7 @@
 				</c:otherwise>
 			</c:choose>
 			<c:choose>
-				<c:when test="${film.plainLanguage == Mandarin}">
+				<c:when test="${film.plainLanguage == 'Mandarin'}">
 					<option value="Mandarin" selected>Mandarin</option>
 				</c:when>
 				<c:otherwise>
@@ -153,7 +153,7 @@
 				</c:otherwise>
 			</c:choose>
 			<c:choose>
-				<c:when test="${film.plainLanguage == French}">
+				<c:when test="${film.plainLanguage == 'French'}">
 					<option value="French" selected>French</option>
 				</c:when>
 				<c:otherwise>
@@ -161,7 +161,7 @@
 				</c:otherwise>
 			</c:choose>
 			<c:choose>
-				<c:when test="${film.plainLanguage == German}">
+				<c:when test="${film.plainLanguage == 'German'}">
 					<option value="German" selected>German</option>
 				</c:when>
 				<c:otherwise>
@@ -172,7 +172,7 @@
 		</select><br> <label for="category">Category</label> <select
 			name="category">
 			<c:choose>
-				<c:when test="${film.category == Action}">
+				<c:when test="${film.category == 'Action'}">
 					<option value="Action" selected>Action</option>
 				</c:when>
 				<c:otherwise>
@@ -180,7 +180,7 @@
 				</c:otherwise>
 			</c:choose>
 			<c:choose>
-				<c:when test="${film.category == Animation}">
+				<c:when test="${film.category == 'Animation'}">
 					<option value="Animation" selected>Animation</option>
 				</c:when>
 				<c:otherwise>
@@ -188,7 +188,7 @@
 				</c:otherwise>
 			</c:choose>
 			<c:choose>
-				<c:when test="${film.category == Children}">
+				<c:when test="${film.category == 'Children'}">
 					<option value="Children" selected>Children</option>
 				</c:when>
 				<c:otherwise>
@@ -196,7 +196,7 @@
 				</c:otherwise>
 			</c:choose>
 			<c:choose>
-				<c:when test="${film.category == Classics}">
+				<c:when test="${film.category == 'Classics'}">
 					<option value="Classics" selected>Classics</option>
 				</c:when>
 				<c:otherwise>
@@ -204,7 +204,7 @@
 				</c:otherwise>
 			</c:choose>
 			<c:choose>
-				<c:when test="${film.category == Comedy}">
+				<c:when test="${film.category == 'Comedy'}">
 					<option value="Comedy" selected>Comedy</option>
 				</c:when>
 				<c:otherwise>
@@ -212,7 +212,7 @@
 				</c:otherwise>
 			</c:choose>
 			<c:choose>
-				<c:when test="${film.category == Documentary}">
+				<c:when test="${film.category == 'Documentary'}">
 					<option value="Documentary" selected>Documentary</option>
 				</c:when>
 				<c:otherwise>
@@ -220,7 +220,7 @@
 				</c:otherwise>
 			</c:choose>
 			<c:choose>
-				<c:when test="${film.category == Drama}">
+				<c:when test="${film.category == 'Drama'}">
 					<option value="Drama" selected>Drama</option>
 				</c:when>
 				<c:otherwise>
@@ -228,7 +228,7 @@
 				</c:otherwise>
 			</c:choose>
 			<c:choose>
-				<c:when test="${film.category == Family}">
+				<c:when test="${film.category == 'Family'}">
 					<option value="Family" selected>Family</option>
 				</c:when>
 				<c:otherwise>
@@ -236,7 +236,7 @@
 				</c:otherwise>
 			</c:choose>
 			<c:choose>
-				<c:when test="${film.category == Foreign}">
+				<c:when test="${film.category == 'Foreign'}">
 					<option value="Foreign" selected>Foreign</option>
 				</c:when>
 				<c:otherwise>
@@ -244,7 +244,7 @@
 				</c:otherwise>
 			</c:choose>
 			<c:choose>
-				<c:when test="${film.category == Games}">
+				<c:when test="${film.category == 'Games'}">
 					<option value="Games" selected>Games</option>
 				</c:when>
 				<c:otherwise>
@@ -252,7 +252,7 @@
 				</c:otherwise>
 			</c:choose>
 			<c:choose>
-				<c:when test="${film.category == Horror}">
+				<c:when test="${film.category == 'Horror'}">
 					<option value="Horror" selected>Horror</option>
 				</c:when>
 				<c:otherwise>
@@ -260,7 +260,7 @@
 				</c:otherwise>
 			</c:choose>
 			<c:choose>
-				<c:when test="${film.category == Music}">
+				<c:when test="${film.category == 'Music'}">
 					<option value="Music" selected>Music</option>
 				</c:when>
 				<c:otherwise>
@@ -268,7 +268,7 @@
 				</c:otherwise>
 			</c:choose>
 			<c:choose>
-				<c:when test="${film.category == New}">
+				<c:when test="${film.category == 'New'}">
 					<option value="New" selected>New</option>
 				</c:when>
 				<c:otherwise>
@@ -284,7 +284,7 @@
 				</c:otherwise>
 			</c:choose>
 			<c:choose>
-				<c:when test="${film.category == Sports}">
+				<c:when test="${film.category == 'Sports'}">
 					<option value="Sports" selected>Sports</option>
 				</c:when>
 				<c:otherwise>
@@ -292,7 +292,7 @@
 				</c:otherwise>
 			</c:choose>
 			<c:choose>
-				<c:when test="${film.category == Travel}">
+				<c:when test="${film.category == 'Travel'}">
 					<option value="Travel" selected>Travel</option>
 				</c:when>
 				<c:otherwise>
