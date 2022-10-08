@@ -43,7 +43,7 @@
 			<c:if test="${filmAdded}">
 				<p>Successfully added.</p>
 			</c:if>
-			<c:if test="${not filmAdded}">
+			<c:if test="${not filmAdded and not filmSearch}">
 				<p class="error">Error while trying to add your film</p>
 			</c:if><br>
 			
