@@ -62,6 +62,10 @@ public class FilmController {
 		List<Film> films = new ArrayList<>();
 		films.add(filmDAO.getFilmById(filmId));
 		
+		if(films.get(0) == null) {
+			films.remove(0);
+		}
+		
 		mv.addObject("filmSearch", true);
 		mv.addObject("films", films);
 		mv.setViewName("Film");
