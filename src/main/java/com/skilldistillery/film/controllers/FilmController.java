@@ -192,15 +192,14 @@ public class FilmController {
 		}
 		
 		Film newFilm = new Film(title, description, year, rentalDurationInt, rentalRateDouble, lengthInt, replacementCostDouble, rating, specialFeatures, plainLanguage, category);
-		newFilm.setId(Integer.parseInt(filmId))
-		;
+		newFilm.setId(Integer.parseInt(filmId));
 		newFilm.setLanguageId(langMap.get(plainLanguage));
 		
-		//add to database and give it an id
 		films.add(filmDAO.updateFilm(newFilm));
 		
+
 		boolean filmAdded = false;
-		if(newFilm != null) {
+		if(films.get(0) != null) {
 			filmAdded = true;
 		}
 		

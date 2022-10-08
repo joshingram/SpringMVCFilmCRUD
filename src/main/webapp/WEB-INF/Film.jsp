@@ -44,7 +44,7 @@
 				<p>Successfully updated.</p>
 			</c:if>
 			<c:if test="${not filmAdded and not filmSearch}">
-				<p class="error">Error while trying to add your film</p>
+				<p class="error">Error while trying to update your film</p>
 			</c:if><br>
 			
 			<c:if test="${not empty film.id}">

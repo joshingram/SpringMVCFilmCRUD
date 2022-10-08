@@ -13,7 +13,7 @@
 			<h1>Update Successful</h1>
 		</c:if>
 		<c:if test="${not isDeleted}">
-			
+			<h1 class="error">There was an error updating your actor.</h1>
 		</c:if>
 	</body>
 </html>
