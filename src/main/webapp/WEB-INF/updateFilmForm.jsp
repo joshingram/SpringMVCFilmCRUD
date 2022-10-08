@@ -34,12 +34,47 @@
 			
 			<label for="rating"><strong>Rating</strong></label>
 			<select name="rating">
-				<option value="G" <c:if test="${film.rating.equals("G")}">selected</c:if>>G</option>
-				<option value="PG">PG <c:if test="${film.rating.equals("PG")}">selected</c:if></option>
-				<option value="PG13" <c:if test="${film.rating.equals("PG13")}">selected</c:if>>PG13</option>
-				<option value="R" <c:if test="${film.rating.equals("R")}">selected</c:if>>R</option>
-				<option value="NC17" <c:if test="${film.rating.equals("NC17")}">selected</c:if>>NC17</option>
-				
+				<c:choose>
+					<c:when test="${film.rating == 'G'}">
+						<option value="G" selected>G</option>
+					</c:when>
+					<c:otherwise>
+						<option value="G">G</option>
+					</c:otherwise>
+				</c:choose>
+				<c:choose>
+					 <c:when test="${film.rating == 'PG'}">
+						<option value="PG" selected>PG</option>
+					</c:when>
+					<c:otherwise>
+						<option value="PG">PG</option>
+					</c:otherwise>
+				</c:choose>
+				<c:choose>
+					<c:when test="${film.rating == 'PG13'}">
+						<option value="PG13" selected>PG13</option>
+					</c:when>
+					<c:otherwise>
+						<option value="PG13">PG13</option>
+					</c:otherwise>
+				</c:choose>
+				<c:choose>
+					<c:when test="${film.rating == 'R'}">
+						<option value="R" selected>R</option>
+					</c:when>
+					<c:otherwise>
+						<option value="R">R</option>
+					</c:otherwise>
+				</c:choose>
+				<c:choose>
+					<c:when test="${film.rating == 'NC17'}">
+						<option value="NC17" selected>NC17</option>
+					</c:when>
+					<c:otherwise>
+						<option value="NC17">NC17</option>
+					</c:otherwise>
+				</c:choose>
+	
 			</select>
 			
 			<div>
