@@ -22,9 +22,11 @@
 					<li>Film ID#: ${inv.filmId}</li>
 					<li>Store ID#: ${inv.storeId}</li>
 					<li>Media condition: ${inv.mediaCondition}</li>
-					<li>Customer's name: ${inv.customerFirstName} ${inv.customerLastName}</li>
-					<li>Customer's address: ${inv.address}</li> 
-					<li>${inv.city}, ${inv.stateProvince} ${inv.postalCode} Country: ${inv.countryCode}</li>
+					<c:if test="${not empty inv.customerFirstName}">	
+						<li>Customer's name: ${inv.customerFirstName} ${inv.customerLastName}</li>
+						<li>Customer's address: ${inv.address}</li> 
+						<li>${inv.city}, ${inv.stateProvince} ${inv.postalCode} Country: ${inv.countryCode}</li>
+					</c:if>				
 				</ul>
 			</c:forEach>
 		</c:otherwise>
