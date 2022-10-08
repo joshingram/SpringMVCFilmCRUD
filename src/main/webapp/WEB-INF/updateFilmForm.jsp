@@ -34,11 +34,12 @@
 			
 			<label for="rating"><strong>Rating</strong></label>
 			<select name="rating">
-				<option value="G" <c:if test="${film.rating}.equals(G)">selected</c:if>>G</option>
-				<option value="PG">PG <c:if test="${film.rating}.equals(PG)">selected</c:if></option>
-				<option value="PG13" <c:if test="${film.rating}.equals(PG13)">selected</c:if>>PG13</option>
-				<option value="R" <c:if test="${film.rating}.equals(R)">selected</c:if>>R</option>
-				<option value="NC17" <c:if test="${film.rating}.equals(NC17)">selected</c:if>>NC17</option>
+				<option value="G" <c:if test="${film.rating.equals("G")}">selected</c:if>>G</option>
+				<option value="PG">PG <c:if test="${film.rating.equals("PG")}">selected</c:if></option>
+				<option value="PG13" <c:if test="${film.rating.equals("PG13")}">selected</c:if>>PG13</option>
+				<option value="R" <c:if test="${film.rating.equals("R")}">selected</c:if>>R</option>
+				<option value="NC17" <c:if test="${film.rating.equals("NC17")}">selected</c:if>>NC17</option>
+				
 			</select>
 			
 			<div>

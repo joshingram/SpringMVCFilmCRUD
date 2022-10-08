@@ -10,6 +10,9 @@
 <title>Actor details</title>
 </head>
 <body>
+	<c:if test="${empty actors}">
+		<li>No matching actors found</li>
+	</c:if>
 	<c:forEach items="${actors}" var="actor">
 		<h1>Details for ${actor.firstName} ${actor.lastName}</h1>
 		<ul>

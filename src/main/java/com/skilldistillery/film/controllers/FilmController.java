@@ -247,6 +247,10 @@ public class FilmController {
 		List<Actor> actors = new ArrayList<>();
 		actors.add(filmDAO.findActorById(actorId));
 		
+		if(actors.get(0) == null) {
+			actors.remove(0);
+		}
+		
 		mv.addObject("actors", actors);
 		mv.setViewName("Actor");
 		
