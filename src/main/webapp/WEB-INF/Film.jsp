@@ -44,6 +44,7 @@
 			<a href="removeFilm.do?filmId=${film.id}">Delete this film</a> || 
 			<a href="viewInventory.do/?filmId=${film.id}">View available inventory</a>
 			</c:if>
-		</c:forEach>
+		</c:forEach><br>
+		<a href="index.html">Back to home</a>
 	</body>
 </html>

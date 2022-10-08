@@ -10,7 +10,7 @@
 		<title>Film Updater</title>
 	</head>
 	<body>
-		<form action="addFilm.do" method="POST">
+		<form action="updateFilm.do" method="POST">
 			<label for="title" required><strong>Title</strong></label>
 			<input type="text" name="title" value="${film.title}"><br>
 			
@@ -34,11 +34,11 @@
 			
 			<label for="rating"><strong>Rating</strong></label>
 			<select name="rating">
-				<option value="G" <c:if test="${film.rating} = 'G'">selected</c:if>>G</option>
-				<option value="PG">PG <c:if test="${film.rating} = 'PG'">selected</c:if></option>
-				<option value="PG13" <c:if test="${film.rating} = 'PG13'">selected</c:if>>PG13</option>
-				<option value="R" <c:if test="${film.rating} = 'R'">selected</c:if>>R</option>
-				<option value="NC17" <c:if test="${film.rating} = 'NC17'">selected</c:if>>NC17</option>
+				<option value="G" <c:if test="${film.rating}.equals(G)">selected</c:if>>G</option>
+				<option value="PG">PG <c:if test="${film.rating}.equals(PG)">selected</c:if></option>
+				<option value="PG13" <c:if test="${film.rating}.equals(PG13)">selected</c:if>>PG13</option>
+				<option value="R" <c:if test="${film.rating}.equals(R)">selected</c:if>>R</option>
+				<option value="NC17" <c:if test="${film.rating}.equals(NC17)">selected</c:if>>NC17</option>
 			</select>
 			
 			<div>
@@ -81,5 +81,7 @@
 			
 			<button type="submit">Add to database</button>
 		</form>
+		
+		<a href="index.html">Back to home</a>
 	</body>
 </html>

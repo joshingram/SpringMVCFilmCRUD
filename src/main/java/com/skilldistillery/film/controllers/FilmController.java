@@ -120,8 +120,10 @@ public class FilmController {
 		//add to database and give it an id
 		films.add(filmDAO.createFilm(newFilm));
 		
-		redir.addFlashAttribute(films);
-		redir.addFlashAttribute(true);
+		Boolean filmAdded = true;
+		
+		redir.addFlashAttribute("films", films);
+		redir.addFlashAttribute("filmAdded", filmAdded);
 		
 		mv.setViewName("redirect:filmAdded.do");
 		
@@ -129,7 +131,7 @@ public class FilmController {
 	}
 	
 	@RequestMapping(path="filmAdded.do", method=RequestMethod.GET)
-	public ModelAndView filmAdded(List<Film> films, Boolean filmAdded) {
+	public ModelAndView filmAdded(ArrayList<Film> films, Boolean filmAdded) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("Film");
 		return mv;
@@ -143,6 +145,89 @@ public class FilmController {
 		mv.setViewName("updateFilmForm");
 		return mv;
 	}
+	
+	@RequestMapping(path="updateFilm.do", method=RequestMethod.POST)
+	public ModelAndView updateFilm(String title, String description, String year, String rentalDuration, String rentalRate, String length, String replacementCost, String rating, 
+			String specialFeatures, String plainLanguage, String category, String filmId, RedirectAttributes redir) {
+		ModelAndView mv = new ModelAndView();
+		List<Film> films = new ArrayList<>();
+		
+		boolean successfullyDeleted = filmDAO.deleteFilm(Integer.parseInt(filmId));
+		
+		int rentalDurationInt, lengthInt;
+		double rentalRateDouble, replacementCostDouble;
+		
+		try {
+			rentalDurationInt = Integer.parseInt(rentalDuration);
+		} catch (NumberFormatException e) {
+			rentalDurationInt = 3;
+		}
+		
+		try {
+			rentalRateDouble = Double.parseDouble(rentalRate);
+		} catch (NumberFormatException e) {
+			rentalRateDouble = 4.99;
+		}
+		
+		try {
+			lengthInt =  Integer.parseInt(length);
+		} catch (NumberFormatException e) {
+			lengthInt = 0;
+		}
+		
+		try {
+			replacementCostDouble = Double.parseDouble(replacementCost);
+		} catch (NumberFormatException e) {
+			replacementCostDouble = 19.99;
+		}
+		
+		Film newFilm = new Film(title, description, year, rentalDurationInt, rentalRateDouble, lengthInt, replacementCostDouble, rating, specialFeatures, plainLanguage, category);
+		
+		newFilm.setLanguageId(langMap.get(plainLanguage));
+		
+		//add to database and give it an id
+		films.add(filmDAO.createFilm(newFilm));
+		
+		boolean filmAdded = false;
+		if(newFilm.getId() != 0) {
+			filmAdded = true;
+		}
+		
+		redir.addFlashAttribute("films", films);
+		redir.addFlashAttribute("filmAdded", filmAdded);
+		redir.addFlashAttribute("successfullyDeleted", successfullyDeleted);
+		
+		mv.setViewName("redirect:filmUpdated.do");
+		
+		return mv;
+	}
+	
+	@RequestMapping(path="filmUpdated.do", method=RequestMethod.GET)
+	public ModelAndView filmUpdated(ArrayList<Film> films, boolean filmAdded, boolean successfullyDeleted) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("Film");
+		return mv;
+	}
+	
+	@RequestMapping(path="removeFilm.do", method=RequestMethod.GET)
+	public ModelAndView filmDelete(String filmId, RedirectAttributes redir) {
+		ModelAndView mv = new ModelAndView();
+		
+		boolean removed = filmDAO.deleteFilm(Integer.parseInt(filmId));
+		redir.addFlashAttribute("removed", removed);
+		
+		mv.setViewName("redirect:filmRemoved.do");
+		return mv;
+	}
+	
+	@RequestMapping(path="filmRemoved.do", method=RequestMethod.GET)
+	public ModelAndView filmRemoved(boolean removed) {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("filmRemoved");
+		return mv;
+	}
+	
 	//Overloaded for actor ID #
 	@RequestMapping(path = "searchActorId.do", method = RequestMethod.GET, params = "actorId")
 	public ModelAndView showActor(Integer actorId) {
