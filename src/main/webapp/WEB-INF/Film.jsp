@@ -10,9 +10,11 @@
 		<title>Film details</title>
 	</head>
 	<body>
+				<c:if test="${empty films}"><li>No matching film found</li></c:if>
 		<c:forEach var="film" items="${films}">
 			<h1>${film.title}</h1>
 			<ul>
+				<c:if test="${empty film.id}"><li>No matching film found</li></c:if>
 				<c:if test="${not empty film.id}"><li>Film ID: ${film.id}</li></c:if>
 				<c:if test="${not empty film.description}"><li>${film.description}</li></c:if>
 				<c:if test="${not empty film.year}"><li>Release date: ${film.year}</li></c:if>
@@ -37,10 +39,11 @@
 			<c:if test="${filmAdded}">
 				<p>Successfully added.</p>
 			</c:if><br>
-			
+			<c:if test="${not empty film.id}">
 			<a href="updateFilm.do?filmId=${film.id}">Update this film</a> || 
 			<a href="removeFilm.do?filmId=${film.id}">Delete this film</a> || 
 			<a href="viewInventory.do/?filmId=${film.id}">View available inventory</a>
+			</c:if>
 		</c:forEach>
 	</body>
 </html>
