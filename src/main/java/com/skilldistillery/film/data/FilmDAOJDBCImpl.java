@@ -412,7 +412,8 @@ public class FilmDAOJDBCImpl implements FilmDAO {
 		return true;
 	}
 	
-	
+	//Overloaded method takes in Actor ID and Film ID
+	@Override
 	public boolean addActorToFilm(int actorId, int filmId) {
 		Connection conn = null;
 
@@ -426,10 +427,6 @@ public class FilmDAOJDBCImpl implements FilmDAO {
 			stmt.setInt(2, filmId);
 			int updateCount = stmt.executeUpdate();
 
-			sql = "DELETE FROM actor WHERE id = ?";
-			stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, actor.getId());
-			updateCount = stmt.executeUpdate();
 
 			conn.commit(); // COMMIT TRANSACTION
 		} catch (SQLException sqle) {
@@ -445,7 +442,38 @@ public class FilmDAOJDBCImpl implements FilmDAO {
 		}
 		return true;
 	}
+	
+	//Overloaded method takes in Actor ID and Film Title
+	@Override
+	public boolean addActorToFilm(int actorId, String filmTitle) {
+		Connection conn = null;
+
+		try {
+			conn = DriverManager.getConnection(URL, user, pass);
+			conn.setAutoCommit(false); // START TRANSACTION
+
+			String sql = "INSERT INTO film_actor (actor_id, film_id) VALUES (8,(SELECT film_id FROM film WHERE title = \"?\"))";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, actorId);
+			stmt.setString(2, filmTitle);
+			int updateCount = stmt.executeUpdate();
+
+
+			conn.commit(); // COMMIT TRANSACTION
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+			if (conn != null) {
+				try {
+					conn.rollback();
+				} catch (SQLException sqle2) {
+					System.err.println("Error trying to rollback");
+				}
+			}
+			return false;
+		}
+		return true;
 	}
+	
 
 	@Override
 	public Film createFilm(Film film) {

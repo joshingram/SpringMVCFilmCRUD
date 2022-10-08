@@ -33,6 +33,8 @@ public interface FilmDAO {
 	
 	public List<Actor> searchActorByKeyword(String keyword);
 	
-	public boolean addActorToFilm(Actor actor);
+	public boolean addActorToFilm(int actorId, int filmId);
+	
+	public boolean addActorToFilm(int actorId, String filmTitle); 
 
 }
