@@ -50,7 +50,7 @@
 			<c:if test="${not empty film.id}">
 			<a href="updateFilm.do?filmId=${film.id}">Update this film</a> || 
 			<a href="removeFilm.do?filmId=${film.id}">Delete this film</a> || 
-			<a href="viewInventory.do/?filmId=${film.id}">View available inventory</a>
+			<a href="viewInventory.do?filmId=${film.id}">View available inventory</a>
 			</c:if>
 		</c:forEach><br>
 		<a href="index.html">Back to home</a>

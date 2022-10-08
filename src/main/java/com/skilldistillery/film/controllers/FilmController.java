@@ -9,13 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.film.data.FilmDAO;
 import com.skilldistillery.film.entities.Actor;
 import com.skilldistillery.film.entities.Film;
+import com.skilldistillery.film.entities.Inventory;
 
 @Controller
 public class FilmController {
@@ -294,5 +294,24 @@ public class FilmController {
 		
 		return mv;
 	}
+	
+	@RequestMapping(path = "viewInventory.do", method = RequestMethod.GET, params = "filmId")
+	public ModelAndView showInventory(Integer filmId) {
+		ModelAndView mv = new ModelAndView();
+		
+		List<Inventory> inventories = new ArrayList<>();
+		inventories = (filmDAO.getInventory(filmId));
+		
+		if(inventories.get(0) == null) {
+			inventories.remove(0);
+		}
+		
+		mv.addObject("filmId", filmId);
+		mv.addObject("inventory", inventories);
+		mv.setViewName("Inventory");
+		
+		return mv;
+	}
+	
 	
 }
