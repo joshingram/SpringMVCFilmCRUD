@@ -1,0 +1,58 @@
+<html>
+	<head>
+		<title>Add a new movie</title>
+	</head>
+	<body>
+		<form action="addFilm.do" method="POST">
+			<label for="title" required><strong>Title</strong></label>
+			<input type="text" name="title"><br>
+			
+			<label for="description" required><strong>Description</strong></label><br>
+			<input type="textbox" name="description"><br>
+			
+			<label for="year"><strong>Release Date</strong></label>
+			<input type="date" name="year"><br>
+			
+			<label for="rentalDuration"><strong>Rental Duration</strong></label>
+			<input type="number" name="rentalDuration" value="3"><br>
+			
+			<label for="rentalRate"><strong>Rental Rate</strong></label>
+			<input type="number" name="rentalRate" value="4.99"><br>
+			
+			<label for="length"><strong>Movie duration</strong></label>
+			<input type="number" name="length"><br>
+			
+			<label for="replacementCost"><strong>Replacement Cost</strong></label>
+			<input type="number" name="replacementCost" value="19.99"><br>
+			
+			<label for="rating"><strong>Rating</strong></label>
+			<select name="rating">
+				<option value="G" selected>G</option>
+				<option value="PG">PG</option>
+				<option value="PG13">PG13</option>
+				<option value="R">R</option>
+				<option value="NC17">NC17</option>
+			</select>
+			
+			<div>
+				<label for="specialFeatures"><strong>Special Features</strong></label><br>
+				<input type="checkbox" name="specialFeatures" value="Trailers">Trailers</input>
+				<input type="checkbox" name="specialFeatures" value="Commentaries">Commentaries</input>
+				<input type="checkbox" name="specialFeatures" value="Deleted Scenes">Deleted Scenes</input>
+				<input type="checkbox" name="specialFeatures" value="Behind the Scenes">Behind the Scenes</input>
+			</div><br>
+			
+			<label for="language">Language</label>
+			<select name="language">
+				<option value="English" selected>English</option>
+				<option value="Italian">Italian</option>
+				<option value="Japanese">Japanese</option>
+				<option value="Mandarin">Mandarin</option>
+				<option value="French">French</option>
+				<option value="German">German</option>
+			</select>
+			<br>
+			<button type="submit">Add to database</button>
+		</form>
+	</body>
+</html>

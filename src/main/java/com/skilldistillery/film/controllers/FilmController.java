@@ -40,10 +40,15 @@ public class FilmController {
 		
 		mv.addObject("films", films);
 		mv.setViewName("Film");
-		
 		return mv;
 	}
-	/**
-	 * This is a test to make sure git is finally fixed
-	 */
+
+	@RequestMapping(path="addFilm.do", method=RequestMethod.POST)
+	public ModelAndView addFilm(String title, String description, String year) {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.addObject("year", year);
+		mv.setViewName("addFilm");
+		return mv;
+	}
 }

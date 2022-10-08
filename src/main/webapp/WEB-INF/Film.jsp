@@ -26,8 +26,8 @@
 					<li>${actor.firstName} ${actor.lastName}</li>
 				</c:forEach>
 			</ul>
-			<a href="editFilm.do">Update this film</a>
-			<a href="removeFilm.do">Delete this film</a>
+			<a href="editFilm.do">Update this film</a> || 
+			<a href="removeFilm.do">Delete this film</a> || 
 			<a href="viewInventory.do/?filmId=${film.id}">View available inventory</a>
 		</c:forEach>
 	</body>
