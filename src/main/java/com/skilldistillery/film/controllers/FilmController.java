@@ -118,9 +118,12 @@ public class FilmController {
 		newFilm.setLanguageId(langMap.get(plainLanguage));
 		
 		//add to database and give it an id
-		films.add(filmDAO.createFilm(newFilm));
+		films.add(newFilm = filmDAO.createFilm(newFilm));
 		
-		Boolean filmAdded = true;
+		boolean filmAdded = false;
+		if(newFilm != null) {
+			filmAdded = true;
+		}
 		
 		redir.addFlashAttribute("films", films);
 		redir.addFlashAttribute("filmAdded", filmAdded);
@@ -186,10 +189,10 @@ public class FilmController {
 		newFilm.setLanguageId(langMap.get(plainLanguage));
 		
 		//add to database and give it an id
-		films.add(filmDAO.createFilm(newFilm));
+		films.add(newFilm = filmDAO.createFilm(newFilm));
 		
 		boolean filmAdded = false;
-		if(newFilm.getId() != 0) {
+		if(newFilm != null) {
 			filmAdded = true;
 		}
 		
@@ -257,12 +260,13 @@ public class FilmController {
 	@RequestMapping(path = "createActor.do", method = RequestMethod.POST)
 	public ModelAndView showActor(String firstName, String lastName) {
 		ModelAndView mv = new ModelAndView();
+		List<Actor> actors = new ArrayList<>(); 
 		
-		Actor actor = new Actor();
-		actor.setFirstName(firstName);
-		actor.setLastName(lastName);
-		Actor newActor = filmDAO.createActor(actor);
-		mv.addObject("actor", newActor);
+		Actor actor = new Actor(firstName, lastName);
+
+		actors.add(filmDAO.createActor(actor));
+		
+		mv.addObject("actors", actors);
 		mv.setViewName("Actor");
 		
 		return mv;
