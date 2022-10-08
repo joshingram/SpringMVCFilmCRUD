@@ -118,7 +118,7 @@ public class FilmController {
 		//add to database and give it an id
 		films.add(filmDAO.createFilm(newFilm));
 		
-		mv.addObject("film", films);
+		mv.addObject("films", films);
 		mv.addObject("filmAdded", true);
 		
 		mv.setViewName("Film");

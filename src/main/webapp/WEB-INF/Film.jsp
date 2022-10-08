@@ -24,8 +24,8 @@
 				<c:if test="${not empty film.rentalDuration}"><li>Rental Duration: ${film.rentalDuration} days</li></c:if>
 				<c:if test="${not empty film.rentalRate}"><li>Rental Rate: $${film.rentalRate}</li></c:if>
 				<c:if test="${not empty film.replacementCost}"><li>Replacement Cost: $${film.replacementCost}</li></c:if>
-				
 			</ul>
+			
 			<c:if test="${not empty film.actors}">
 				<h3>Cast:</h3>
 				<ul>
@@ -34,7 +34,7 @@
 					</c:forEach>
 				</ul>
 			</c:if>
-			<c:if test="${filmAdded} = true">
+			<c:if test="${filmAdded}">
 				<p>Successfully added.</p>
 			</c:if><br>
 			<a href="editFilm.do">Update this film</a> || 
