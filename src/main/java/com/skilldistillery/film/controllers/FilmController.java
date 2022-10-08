@@ -1,5 +1,8 @@
 package com.skilldistillery.film.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,17 +19,30 @@ public class FilmController {
 	private FilmDAO filmDAO;
 	
 	@RequestMapping(path = "showFilm.do", method = RequestMethod.GET, params = "filmId")
-	
 	public ModelAndView showFilm(Integer filmId) {
 		ModelAndView mv = new ModelAndView();
-		Film film = filmDAO.getFilmById(filmId);
-		mv.addObject("films", film);
-		mv.setViewName("Film");
-		return mv;
 		
+		List<Film> films = new ArrayList<>();
+		films.add(filmDAO.getFilmById(filmId));
+		
+		mv.addObject("films", films);
+		mv.setViewName("Film");
+		
+		return mv;
 	}
 
-	
+	@RequestMapping(path="showFilm.do", method = RequestMethod.GET, params = "keyword")
+	public ModelAndView showFilm(String keyword) {
+		ModelAndView mv = new ModelAndView();
+		
+		List<Film> films = new ArrayList<>();
+		films.addAll(filmDAO.findFilmByKeyword(keyword));
+		
+		mv.addObject(films);
+		mv.setViewName("Film");
+		
+		return mv;
+	}
 	/**
 	 * This is a test to make sure git is finally fixed
 	 */
