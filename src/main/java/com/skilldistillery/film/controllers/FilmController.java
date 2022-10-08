@@ -38,7 +38,7 @@ public class FilmController {
 		List<Film> films = new ArrayList<>();
 		films.addAll(filmDAO.findFilmByKeyword(keyword));
 		
-		mv.addObject(films);
+		mv.addObject("films", films);
 		mv.setViewName("Film");
 		
 		return mv;

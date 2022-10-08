@@ -14,10 +14,10 @@
 			<h1>${film.title}</h1>
 			<ul>
 				<c:if test="${not empty film.description}"><li>${film.description}</li></c:if>
-				<c:if test="${not empty film.year}"><li>${film.year}</li></c:if>
+				<c:if test="${not empty film.year}"><li>Release date: ${film.year}</li></c:if>
 				<c:if test="${not empty film.plainLanguage}"><li>${film.plainLanguage}</li></c:if>
 				<c:if test="${not empty film.rating}"><li>${film.rating}</li></c:if>
-				<c:if test="${not empty film.length}"><li>${film.length}</li></c:if>
+				<c:if test="${not empty film.length}"><li>${film.length} minutes</li></c:if>
 				<c:if test="${not empty film.category}"><li>${film.category}</li></c:if>
 			</ul>
 			<h3>Cast:</h3>
