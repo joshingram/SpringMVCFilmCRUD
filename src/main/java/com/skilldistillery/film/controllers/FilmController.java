@@ -62,6 +62,7 @@ public class FilmController {
 		List<Film> films = new ArrayList<>();
 		films.add(filmDAO.getFilmById(filmId));
 		
+		mv.addObject("filmSearch", true);
 		mv.addObject("films", films);
 		mv.setViewName("Film");
 		
@@ -75,6 +76,7 @@ public class FilmController {
 		List<Film> films = new ArrayList<>();
 		films.addAll(filmDAO.findFilmByKeyword(keyword));
 		
+		mv.addObject("filmSearch", true);
 		mv.addObject("films", films);
 		mv.setViewName("Film");
 		return mv;
@@ -125,8 +127,11 @@ public class FilmController {
 			filmAdded = true;
 		}
 		
+		boolean filmSearch = false;
+		
 		redir.addFlashAttribute("films", films);
 		redir.addFlashAttribute("filmAdded", filmAdded);
+		redir.addFlashAttribute("filmSearch", filmSearch);
 		
 		mv.setViewName("redirect:filmAdded.do");
 		
@@ -134,7 +139,7 @@ public class FilmController {
 	}
 	
 	@RequestMapping(path="filmAdded.do", method=RequestMethod.GET)
-	public ModelAndView filmAdded(ArrayList<Film> films, Boolean filmAdded) {
+	public ModelAndView filmAdded(ArrayList<Film> films, boolean filmAdded, boolean filmSearch) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("Film");
 		return mv;
@@ -199,6 +204,7 @@ public class FilmController {
 		redir.addFlashAttribute("films", films);
 		redir.addFlashAttribute("filmAdded", filmAdded);
 		redir.addFlashAttribute("successfullyDeleted", successfullyDeleted);
+		redir.addFlashAttribute("filmSearch", false);
 		
 		mv.setViewName("redirect:filmUpdated.do");
 		
@@ -218,6 +224,7 @@ public class FilmController {
 		
 		boolean removed = filmDAO.deleteFilm(Integer.parseInt(filmId));
 		redir.addFlashAttribute("removed", removed);
+		redir.addFlashAttribute("filmSearch", false);
 		
 		mv.setViewName("redirect:filmRemoved.do");
 		return mv;
