@@ -13,7 +13,7 @@
 	<c:if test="${empty inventory}">
 		<li>No matching inventory found</li>
 	</c:if>
-	<H2> All inventory for film ID# ${filmId}</H2>
+	<H2> All inventory for film ID# ${film.id}: ${film.title}</H2>
 	<c:forEach items="${inventory}" var="inv">
 		<h3>Inventory ID#: ${inv.id}</h3>
 		<ul>

@@ -298,6 +298,7 @@ public class FilmController {
 	@RequestMapping(path = "viewInventory.do", method = RequestMethod.GET, params = "filmId")
 	public ModelAndView showInventory(Integer filmId) {
 		ModelAndView mv = new ModelAndView();
+		Film film = filmDAO.getFilmById(filmId);
 		
 		List<Inventory> inventories = new ArrayList<>();
 		inventories = (filmDAO.getInventory(filmId));
@@ -306,7 +307,7 @@ public class FilmController {
 			inventories.remove(0);
 		}
 		
-		mv.addObject("filmId", filmId);
+		mv.addObject("film", film);
 		mv.addObject("inventory", inventories);
 		mv.setViewName("Inventory");
 		
