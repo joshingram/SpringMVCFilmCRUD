@@ -214,18 +214,25 @@ public class FilmDAOJDBCImpl implements FilmDAO {
 		List<Inventory> inventories = new ArrayList<>();
 		try {
 			Connection conn = DriverManager.getConnection(URL, user, pass);
-			String sql = "SELECT id, film_id, store_id, media_condition FROM inventory_item WHERE film_id = ?";
+			String sql = "SELECT inventory_item.id, inventory_item.film_id, inventory_item.store_id, inventory_item.media_condition, customer.first_name, customer.last_name, address.address, address.city, address.state_province, address.postal_code, address.country_code FROM inventory_item JOIN rental ON rental.id = inventory_item.id JOIN customer ON rental.customer_id = customer.id JOIN address ON customer.address_id = address.id WHERE film_id = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, filmId);
 
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				Inventory inventory = new Inventory();
-				inventory.setId(rs.getInt("id"));
-				inventory.setFilmId(rs.getInt("film_id"));
-				inventory.setStoreId(rs.getInt("store_id"));
-				inventory.setMediaCondition(rs.getString("media_condition"));
-
+				inventory.setId(rs.getInt("inventory_item.id"));
+				inventory.setFilmId(rs.getInt("inventory_item.film_id"));
+				inventory.setStoreId(rs.getInt("inventory_item.store_id"));
+				inventory.setMediaCondition(rs.getString("inventory_item.media_condition"));
+				inventory.setCustomerFirstName(rs.getString("customer.first_name"));
+				inventory.setCustomerLastName(rs.getString("customer.last_name"));
+				inventory.setAddress(rs.getString("address.address"));
+				inventory.setCity(rs.getString("address.city"));
+				inventory.setStateProvince(rs.getString("address.state_province"));
+				inventory.setPostalCode(rs.getInt("address.postal_code"));
+				inventory.setCountryCode(rs.getString("address.country_code"));
+				
 				inventories.add(inventory);
 			}
 			rs.close();
