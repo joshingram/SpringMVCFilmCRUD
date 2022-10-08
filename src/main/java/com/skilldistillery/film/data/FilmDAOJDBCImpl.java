@@ -422,9 +422,23 @@ public class FilmDAOJDBCImpl implements FilmDAO {
 	}
 
 	@Override
-	public boolean deleteFilm(Film film) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean deleteFilm(int filmId) {
+		boolean deleted = false;
+		try {
+			Connection conn = DriverManager.getConnection(URL, user, pass);
+			String sql = "DELETE FROM film WHERE id = ?";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, filmId);
+			int updateCount = stmt.executeUpdate();
+			if (updateCount == 1) {
+				deleted = true;
+			}
+			stmt.close();
+			conn.close();
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+		}
+		return deleted;
 	}
 
 	@Override
