@@ -15,5 +15,7 @@
 		<c:if test="${not isDeleted}">
 			<h1 class="error">There was an error updating your actor.</h1>
 		</c:if>
+		
+		<a href="index.html">Back to home</a>
 	</body>
 </html>

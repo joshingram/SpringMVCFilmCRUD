@@ -266,7 +266,7 @@ public class FilmController {
 		return mv;
 	}
 	@RequestMapping(path = "createActor.do", method = RequestMethod.POST)
-	public ModelAndView showActor(String firstName, String lastName) {
+	public ModelAndView createActor(String firstName, String lastName) {
 		ModelAndView mv = new ModelAndView();
 		List<Actor> actors = new ArrayList<>(); 
 		
@@ -280,10 +280,10 @@ public class FilmController {
 		return mv;
 	}
 	@RequestMapping(path = "removeActor.do", method = RequestMethod.GET)
-	public ModelAndView removeActor(int actorId){
+	public ModelAndView removeActor(String actorId){
 		ModelAndView mv = new ModelAndView();
 		
-		boolean isDeleted = filmDAO.deleteActor(actorId);
+		boolean isDeleted = filmDAO.deleteActor(Integer.parseInt(actorId));
 		
 		mv.addObject("isDeleted", isDeleted);
 		mv.setViewName("actorRemoved");

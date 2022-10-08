@@ -17,11 +17,13 @@
 			<li>${actor.lastName}</li>
 			<li>Actor ID#: ${actor.id}</li>
 		</ul>
+
+		<a href="removeActor.do?actorId=${actor.id}">Delete this Actor</a> 
 	</c:forEach>
 	
 	<c:if test="${not empty actor}"><h3>The actor ${actor} has been added!</h3></c:if>
 	
-	<a href="removeActor.do?actorId=${actor.id}">Delete this Actor</a> 
+	<a href="index.html">Back to home</a>
 
 </body>
 </html>
