@@ -495,10 +495,10 @@ public class FilmDAOJDBCImpl implements FilmDAO {
 				stmt.setString(2, "");
 			}
 
-			if (film.getYear() != null) {
-				stmt.setString(3, film.getYear());
-			} else {
-				stmt.setString(3, "");
+			try {
+				stmt.setInt(3, Integer.parseInt(film.getYear()));
+			} catch(NumberFormatException e) {
+				stmt.setInt(3, 0);
 			}
 
 			if (film.getLanguageId() != 0) {
