@@ -15,6 +15,8 @@ public interface FilmDAO {
 	
 	public List<Actor> findActorsByFilmId(int filmId);
 	
+	public List<Actor> searchActorByKeyword(String keyword);
+	
 	public List<Film> findFilmByKeyword(String keyword);
 	
 	public String getLanguage(int langID);
@@ -25,16 +27,19 @@ public interface FilmDAO {
 	
 	public Actor createActor(Actor actor);
 	
-	public Film createFilm(Film film);
+	public boolean saveActor(Actor actor);
 	
-	public boolean deleteFilm(int filmId);
-	
-	public Film updateFilm(int filmId, Film film);
-	
-	public List<Actor> searchActorByKeyword(String keyword);
+	public boolean deleteActor(Actor actor);
 	
 	public boolean addActorToFilm(int actorId, int filmId);
 	
 	public boolean addActorToFilm(int actorId, String filmTitle); 
+	
+	public Film createFilm(Film film);
+	
+	public boolean deleteFilm(int filmId);
+	
+	public Film updateFilm(Film film);
+	
 
 }
