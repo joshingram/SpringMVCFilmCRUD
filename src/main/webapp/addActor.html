@@ -1,10 +1,15 @@
 <html>
-	<head>
-		<title>Actor Creation</title>
-	</head>
-	<body>
-		<form action="createActor.do" method="POST">
+<head>
+<title>Actor Creation</title>
+</head>
+<body>
+	<form action="createActor.do" method="POST">
+		<label for="firstName" required><strong>First Name</strong></label> <input
+			type="text" name="firstName"><br> 
 			
-		</form>
-	</body>
+		<label for="lastName" required><strong>Last Name</strong></label> <input type="text"
+			name="lastName"><br>
+		<button type="submit">Add to database</button>
+	</form>
+</body>
 </html>

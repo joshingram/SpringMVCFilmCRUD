@@ -3,15 +3,16 @@
 		<title>Actor Lookup</title>
 	</head>
 	<body>
+	<H1>Search for an Actor by ID# or Keyword</H1>
 		<form action="searchActorId.do" method="GET">
-			<label for="id">Actor's ID</label><br>
-			<input type="text" name="id" required><br>
+			<label for="id">Actor's ID</label>
+			<input type="text" name="actorId" required>
 			
 			<button type="submit">Search</button>
 		</form>
 		<form action="searchActorName.do" method="GET">
-			<label for="keyword">Actor's First Or Last Name</label><br>
-			<input type="text" name="keyword" required><br>
+			<label for="keyword">Actor's First Or Last Name</label>
+			<input type="text" name="keyword" required>
 
 			<button type="submit">Search</button>
 		</form>

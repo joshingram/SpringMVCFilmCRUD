@@ -1,15 +1,11 @@
 package com.skilldistillery.film.controllers;
 
-import static org.hamcrest.CoreMatchers.nullValue;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.taglibs.standard.lang.jstl.test.beans.PublicBean1;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.ReaderEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.film.data.FilmDAO;
+import com.skilldistillery.film.entities.Actor;
 import com.skilldistillery.film.entities.Film;
 
 @Controller
@@ -143,6 +140,45 @@ public class FilmController {
 		
 		mv.addObject(filmDAO.getFilmById(filmId));
 		mv.setViewName("updateFilmForm");
+		return mv;
+	}
+	//Overloaded for actor ID #
+	@RequestMapping(path = "searchActorId.do", method = RequestMethod.GET, params = "actorId")
+	public ModelAndView showActor(Integer actorId) {
+		ModelAndView mv = new ModelAndView();
+		
+		List<Actor> actors = new ArrayList<>();
+		actors.add(filmDAO.findActorById(actorId));
+		
+		mv.addObject("actors", actors);
+		mv.setViewName("Actor");
+		
+		return mv;
+	}
+	//Overloaded for keyword
+	@RequestMapping(path = "searchActorName.do", method = RequestMethod.GET, params = "keyword")
+	public ModelAndView showActor(String keyword) {
+		ModelAndView mv = new ModelAndView();
+		
+		List<Actor> actors = new ArrayList<>();
+		actors = filmDAO.searchActorByKeyword(keyword);
+		
+		mv.addObject("actors", actors);
+		mv.setViewName("Actor");
+		
+		return mv;
+	}
+	@RequestMapping(path = "createActor.do", method = RequestMethod.POST)
+	public ModelAndView showActor(String firstName, String lastName) {
+		ModelAndView mv = new ModelAndView();
+		
+		Actor actor = new Actor();
+		actor.setFirstName(firstName);
+		actor.setLastName(lastName);
+		Actor newActor = filmDAO.createActor(actor);
+		mv.addObject("actor", newActor);
+		mv.setViewName("Actor");
+		
 		return mv;
 	}
 }

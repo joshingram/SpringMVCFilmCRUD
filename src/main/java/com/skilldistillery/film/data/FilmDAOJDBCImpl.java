@@ -113,18 +113,18 @@ public class FilmDAOJDBCImpl implements FilmDAO {
 
 	@Override
 	public List<Actor> searchActorByKeyword(String keyword) {
-		List<Actor> actors = null;
-		Connection conn;
+		List<Actor> actors = new ArrayList<>();
+		
 		try {
-			conn = DriverManager.getConnection(URL, user, pass);
-			String sql = "SELECT id, first_name, last_name FROM actor WHERE first_name LIKE ? OR last_name LIKE ? ";
+			Connection conn = DriverManager.getConnection(URL, user, pass);
+			String sql = "SELECT id, first_name, last_name FROM actor WHERE first_name LIKE ? OR last_name LIKE ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setString(1, keyword);
-			stmt.setString(2, keyword);
+			stmt.setString(1, "%" + keyword + "%");
+			stmt.setString(2, "%" + keyword + "%");
 
 			ResultSet actorsResult = stmt.executeQuery();
 
-			if (actorsResult.next()) {
+			while (actorsResult.next()) {
 				Actor actor = new Actor(); 
 			
 				actor.setId(actorsResult.getInt("id"));
