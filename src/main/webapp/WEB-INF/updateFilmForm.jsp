@@ -10,7 +10,7 @@
 		<title>Film Updater</title>
 	</head>
 	<body>
-		<form action="updateFilm.do" method="POST">
+		<form action="updateFilm.do?filmId=${film.id}" method="POST">
 			<label for="title" required><strong>Title</strong></label>
 			<input type="text" name="title" value="${film.title}"><br>
 			

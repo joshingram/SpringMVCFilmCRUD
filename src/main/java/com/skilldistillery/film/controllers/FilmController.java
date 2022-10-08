@@ -164,8 +164,6 @@ public class FilmController {
 		ModelAndView mv = new ModelAndView();
 		List<Film> films = new ArrayList<>();
 		
-		boolean successfullyDeleted = filmDAO.deleteFilm(Integer.parseInt(filmId));
-		
 		int rentalDurationInt, lengthInt;
 		double rentalRateDouble, replacementCostDouble;
 		
@@ -194,11 +192,12 @@ public class FilmController {
 		}
 		
 		Film newFilm = new Film(title, description, year, rentalDurationInt, rentalRateDouble, lengthInt, replacementCostDouble, rating, specialFeatures, plainLanguage, category);
-		
+		newFilm.setId(Integer.parseInt(filmId))
+		;
 		newFilm.setLanguageId(langMap.get(plainLanguage));
 		
 		//add to database and give it an id
-		films.add(newFilm = filmDAO.createFilm(newFilm));
+		films.add(filmDAO.updateFilm(newFilm));
 		
 		boolean filmAdded = false;
 		if(newFilm != null) {
@@ -207,7 +206,6 @@ public class FilmController {
 		
 		redir.addFlashAttribute("films", films);
 		redir.addFlashAttribute("filmAdded", filmAdded);
-		redir.addFlashAttribute("successfullyDeleted", successfullyDeleted);
 		redir.addFlashAttribute("filmSearch", false);
 		
 		mv.setViewName("redirect:filmUpdated.do");
@@ -285,11 +283,11 @@ public class FilmController {
 	@RequestMapping(path = "removeActor.do", method = RequestMethod.GET)
 	public ModelAndView removeActor(int actorId){
 		ModelAndView mv = new ModelAndView();
-	
-	//THIS DOESN'T WORK//	
 		
 		boolean isDeleted = filmDAO.deleteActor(actorId);
 		
+		mv.addObject("isDeleted", isDeleted);
+		mv.setViewName("actorRemoved");
 		
 		return mv;
 	}
