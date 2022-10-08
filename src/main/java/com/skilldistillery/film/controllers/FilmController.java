@@ -299,14 +299,17 @@ public class FilmController {
 	public ModelAndView showInventory(Integer filmId) {
 		ModelAndView mv = new ModelAndView();
 		Film film = filmDAO.getFilmById(filmId);
+		boolean noInventory = false;
 		
 		List<Inventory> inventories = new ArrayList<>();
 		inventories = (filmDAO.getInventory(filmId));
 		
-		if(inventories.get(0) == null) {
-			inventories.remove(0);
+		if(inventories.size()==0) {
+		//	inventories.remove(0);
+			noInventory = true;
 		}
 		
+		mv.addObject("noInventory", noInventory);
 		mv.addObject("film", film);
 		mv.addObject("inventory", inventories);
 		mv.setViewName("Inventory");
