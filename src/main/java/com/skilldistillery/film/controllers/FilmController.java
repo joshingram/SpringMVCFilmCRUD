@@ -20,12 +20,13 @@ public class FilmController {
 	public ModelAndView showFilm(Integer filmId) {
 		ModelAndView mv = new ModelAndView();
 		Film film = filmDAO.getFilmById(filmId);
-		mv.addObject("film", film);
+		mv.addObject("films", film);
 		mv.setViewName("Film");
 		return mv;
 		
 	}
 
+	
 	/**
 	 * This is a test to make sure git is finally fixed
 	 */
