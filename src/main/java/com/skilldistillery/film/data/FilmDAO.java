@@ -29,7 +29,7 @@ public interface FilmDAO {
 	
 	public boolean saveActor(Actor actor);
 	
-	public boolean deleteActor(Actor actor);
+	public boolean deleteActor(int actorId); 
 	
 	public boolean addActorToFilm(int actorId, int filmId);
 	

@@ -20,6 +20,8 @@
 	</c:forEach>
 	
 	<c:if test="${not empty actor}"><h3>The actor ${actor} has been added!</h3></c:if>
+	
+	<a href="removeActor.do?actorId=${actor.id}">Delete this Actor</a> 
 
 </body>
 </html>

@@ -359,7 +359,7 @@ public class FilmDAOJDBCImpl implements FilmDAO {
 		return true;
 	}
 	@Override
-	public boolean deleteActor(Actor actor) {
+	public boolean deleteActor(int actorId) {
 		Connection conn = null;
 
 		try {
@@ -367,13 +367,13 @@ public class FilmDAOJDBCImpl implements FilmDAO {
 			conn.setAutoCommit(false); 
 			String sql = "DELETE FROM film_actor WHERE actor_id = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, actor.getId());
+			stmt.setInt(1, actorId);
 			
 			int updateCount = stmt.executeUpdate();
 
 			sql = "DELETE FROM actor WHERE id = ?";
 			stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, actor.getId());
+			stmt.setInt(1, actorId);
 			updateCount = stmt.executeUpdate();
 
 			conn.commit(); 
