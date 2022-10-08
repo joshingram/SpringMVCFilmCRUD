@@ -304,7 +304,7 @@ public class FilmController {
 		List<Inventory> inventories = new ArrayList<>();
 		inventories = (filmDAO.getInventory(filmId));
 		
-		if(inventories.size()==0) {
+		if(inventories.size() == 0) {
 		//	inventories.remove(0);
 			noInventory = true;
 		}

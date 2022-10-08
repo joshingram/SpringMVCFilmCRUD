@@ -11,7 +11,7 @@
 </head>
 <body>
 	<c:choose>
-		<c:when test="${noInventory = true}">
+		<c:when test="${noInventory}">
 			<li>No matching inventory found</li>
 		</c:when>
 		<c:otherwise>
@@ -24,7 +24,7 @@
 					<li>Media condition: ${inv.mediaCondition}</li>
 					<li>Customer's name: ${inv.customerFirstName} ${inv.customerLastName}</li>
 					<li>Customer's address: ${inv.address}</li> 
-					<${inv.city}, ${inv.stateProvince} ${inv.postalCode} Country: ${inv.countryCode}
+					<li>${inv.city}, ${inv.stateProvince} ${inv.postalCode} Country: ${inv.countryCode}</li>
 				</ul>
 			</c:forEach>
 		</c:otherwise>
