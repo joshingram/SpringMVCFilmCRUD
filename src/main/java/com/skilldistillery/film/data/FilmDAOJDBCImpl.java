@@ -384,12 +384,49 @@ public class FilmDAOJDBCImpl implements FilmDAO {
 
 			conn.setAutoCommit(false); // START TRANSACTION
 
-			String sql = "INSERT INTO film (title, description, language_id) VALUES (?,?, 1)";
+			String sql = "INSERT INTO film (title, description, release_year, language_id, rental_duration, rental_rate, length, replacement_cost, rating, special_features) VALUES (?,?,?,?,?,?,?,?,?,?)";
 
 			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
 			stmt.setString(1, film.getTitle());
-			stmt.setString(2, film.getDescription());
+			
+			if (film.getDescription() != null) {
+				stmt.setString(2, film.getDescription());
+			}else { stmt.setString(2, null);}
+			
+			if (film.getYear() != null) {
+			stmt.setString(3, film.getYear());
+			}else { stmt.setString(3, null);}
+			
+			if (film.getLanguageId() != 0) {
+			stmt.setInt(4, film.getLanguageId());
+			}else { stmt.setInt(4, 1);}
+			
+			if (film.getRentalDuration() != 0) {
+			stmt.setInt(5, film.getRentalDuration());
+			}else { stmt.setInt(5, 1);}
+			
+			if (film.getRentalRate() != 0) {
+			stmt.setDouble(6, film.getRentalRate());
+			}else { stmt.setDouble(6, 1);}
+			
+			if (film.getLength() != 0) {
+			stmt.setInt(7, film.getLength());
+			}else { stmt.setInt(7, 1);}
+			
+			if (film.getReplacementCost() != 0) {
+			stmt.setDouble(8, film.getReplacementCost());
+			}else { stmt.setInt(8, 1);}
+			
+			if (film.getRating() != null) {
+			stmt.setString(9, film.getRating());
+			}else { stmt.setString(9, null);}
+			
+			if (film.getSpecialFeatures() != null) {
+			stmt.setString(10, film.getSpecialFeatures());
+			}else { stmt.setString(10, null);}
+			
+			
 
 			int updateCount = stmt.executeUpdate();
 
@@ -443,10 +480,87 @@ public class FilmDAOJDBCImpl implements FilmDAO {
 
 	@Override
 	public Film updateFilm(int filmId, Film film) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		Connection conn = null;
+		try {
+			conn = DriverManager.getConnection(URL, user, pass);
 
+			conn.setAutoCommit(false); // START TRANSACTION
+
+			String sql = "UPDATE film SET title=?, description=?, release_year=?, language_id=?, rental_duration=?, rental_rate=?, length=?, replacement_cost=?, rating=?, special_features=? WHERE id = ?";
+
+			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+			stmt.setString(1, film.getTitle());
+			
+			if (film.getDescription() != null) {
+				stmt.setString(2, film.getDescription());
+			}else { stmt.setString(2, null);}
+			
+			if (film.getYear() != null) {
+			stmt.setString(3, film.getYear());
+			}else { stmt.setString(3, null);}
+			
+			if (film.getLanguageId() != 0) {
+			stmt.setInt(4, film.getLanguageId());
+			}else { stmt.setInt(4, 1);}
+			
+			if (film.getRentalDuration() != 0) {
+			stmt.setInt(5, film.getRentalDuration());
+			}else { stmt.setInt(5, 1);}
+			
+			if (film.getRentalRate() != 0) {
+			stmt.setDouble(6, film.getRentalRate());
+			}else { stmt.setDouble(6, 1);}
+			
+			if (film.getLength() != 0) {
+			stmt.setInt(7, film.getLength());
+			}else { stmt.setInt(7, 1);}
+			
+			if (film.getReplacementCost() != 0) {
+			stmt.setDouble(8, film.getReplacementCost());
+			}else { stmt.setInt(8, 1);}
+			
+			if (film.getRating() != null) {
+			stmt.setString(9, film.getRating());
+			}else { stmt.setString(9, null);}
+			
+			if (film.getSpecialFeatures() != null) {
+			stmt.setString(10, film.getSpecialFeatures());
+			}else { stmt.setString(10, null);}
+			
+			stmt.setInt(11,film.getId());
+			
+			
+
+			int updateCount = stmt.executeUpdate();
+
+			if (updateCount == 1) {
+				ResultSet keys = stmt.getGeneratedKeys();
+
+				if (keys.next()) {
+					int newFilmId = keys.getInt(1);
+
+					film.setId(newFilmId);
+					
+				} else {
+					film = null;
+				}
+			}
+				conn.commit(); // COMMIT TRANSACTION
+				conn.close();
+			} catch (SQLException sqle) {
+				sqle.printStackTrace();
+				if (conn != null) {
+					try {
+						conn.rollback();
+					} catch (SQLException sqle2) {
+						System.err.println("Error trying to rollback");
+					}
+				}
+				throw new RuntimeException("Error inserting actor " + film);
+			}
+			return film;
+	}
 
 	static {
 		try {
