@@ -30,5 +30,9 @@ public interface FilmDAO {
 	public boolean deleteFilm(int filmId);
 	
 	public Film updateFilm(int filmId, Film film);
+	
+	public List<Actor> searchActorByKeyword(String keyword);
+	
+	public boolean addActorToFilm(Actor actor);
 
 }
