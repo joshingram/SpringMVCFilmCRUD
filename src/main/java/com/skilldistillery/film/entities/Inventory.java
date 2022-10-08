@@ -76,7 +76,7 @@ public class Inventory {
 					&& storeId == other.storeId;
 		}
 		
-		
+		//test to get git to push
 
 	}
 
