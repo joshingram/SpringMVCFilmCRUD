@@ -5,17 +5,14 @@
 	<body>
 		<form action="searchActorId.do" method="GET">
 			<label for="id">Actor's ID</label><br>
-			<input type="text" name="id"><br>
+			<input type="text" name="id" required><br>
 			
 			<button type="submit">Search</button>
 		</form>
-		<form action="searchActorName.do" metho="GET">
-			<label for="firstName">Actor's First Name</label><br>
-			<input type="text" name="firstName"><br>
-			
-			<label for="lastName">Actor's Last Name</label><br>
-			<input type="text" name="lastName"><br>
-			
+		<form action="searchActorName.do" method="GET">
+			<label for="keyword">Actor's First Or Last Name</label><br>
+			<input type="text" name="keyword" required><br>
+
 			<button type="submit">Search</button>
 		</form>
 	</body>

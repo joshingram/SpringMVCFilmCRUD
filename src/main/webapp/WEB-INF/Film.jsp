@@ -37,8 +37,9 @@
 			<c:if test="${filmAdded}">
 				<p>Successfully added.</p>
 			</c:if><br>
-			<a href="editFilm.do">Update this film</a> || 
-			<a href="removeFilm.do">Delete this film</a> || 
+			
+			<a href="updateFilm.do?filmId=${film.id}">Update this film</a> || 
+			<a href="removeFilm.do?filmId=${film.id}">Delete this film</a> || 
 			<a href="viewInventory.do/?filmId=${film.id}">View available inventory</a>
 		</c:forEach>
 	</body>

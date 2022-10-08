@@ -7,11 +7,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.taglibs.standard.lang.jstl.test.beans.PublicBean1;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.ReaderEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.film.data.FilmDAO;
 import com.skilldistillery.film.entities.Film;
@@ -80,7 +83,8 @@ public class FilmController {
 	}
 
 	@RequestMapping(path="addFilm.do", method=RequestMethod.POST)
-	public ModelAndView addFilm(String title, String description, String year, String rentalDuration, String rentalRate, String length, String replacementCost, String rating, String specialFeatures, String plainLanguage, String category) {
+	public ModelAndView addFilm(String title, String description, String year, String rentalDuration, String rentalRate, String length, String replacementCost, String rating, 
+			String specialFeatures, String plainLanguage, String category, RedirectAttributes redir) {
 		ModelAndView mv = new ModelAndView();
 		List<Film> films = new ArrayList<>();
 		
@@ -118,11 +122,27 @@ public class FilmController {
 		//add to database and give it an id
 		films.add(filmDAO.createFilm(newFilm));
 		
-		mv.addObject("films", films);
-		mv.addObject("filmAdded", true);
+		redir.addFlashAttribute(films);
+		redir.addFlashAttribute(true);
 		
+		mv.setViewName("redirect:filmAdded.do");
+		
+		return mv;
+	}
+	
+	@RequestMapping(path="filmAdded.do", method=RequestMethod.GET)
+	public ModelAndView filmAdded(List<Film> films, Boolean filmAdded) {
+		ModelAndView mv = new ModelAndView();
 		mv.setViewName("Film");
+		return mv;
+	}
+	
+	@RequestMapping(path="updateFilm.do", method=RequestMethod.GET)
+	public ModelAndView updateFilm(int filmId) {
+		ModelAndView mv = new ModelAndView();
 		
+		mv.addObject(filmDAO.getFilmById(filmId));
+		mv.setViewName("updateFilmForm");
 		return mv;
 	}
 }
