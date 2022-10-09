@@ -639,7 +639,18 @@ public class FilmDAOJDBCImpl implements FilmDAO {
 			}
 
 			stmt.setInt(11, film.getId());
+			int updateCount = stmt.executeUpdate();
 
+			if (updateCount == 1) {
+				ResultSet keys = stmt.getGeneratedKeys();
+
+				if (keys.next()) {
+					int newFilmId = keys.getInt(1);
+
+					film.setId(newFilmId);
+
+				}
+			}
 			conn.commit(); // COMMIT TRANSACTION
 			conn.close();
 		} catch (SQLException sqle) {
