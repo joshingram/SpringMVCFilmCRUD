@@ -18,10 +18,10 @@
 		</div>
 		<div class="container">
 			<form action="updateFilm.do?filmId=${film.id}" method="POST">
-				<label for="title" required><strong>Title</strong></label> <input
-					type="text" name="title" value="${film.title}"><br> <label
-					for="description" required><strong>Description</strong></label><br>
-				<textarea name="description">${film.description}</textarea>
+				<label for="title"><strong>Title</strong></label> <input
+					type="text" name="title" value="${film.title}" required><br> <label
+					for="description"><strong>Description</strong></label><br>
+				<textarea name="description" required>${film.description}</textarea>
 				<br> <label for="year"><strong>Release Date</strong></label> <input
 					type="year" name="year" value="${film.year}"><br> <label
 					for="rentalDuration"><strong>Rental Duration</strong></label> <input
