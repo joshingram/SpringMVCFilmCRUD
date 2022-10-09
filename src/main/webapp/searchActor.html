@@ -1,22 +1,29 @@
 <html>
 	<head>
 		<title>Actor Lookup</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+		<link href="style.css" rel="stylesheet">
+		<link rel="shortcut icon" link="images/sdvideologo.png">
 	</head>
 	<body>
-	<H1>Search for an Actor by ID# or Keyword</H1>
-		<form action="searchActorId.do" method="GET">
-			<label for="id">Actor's ID</label>
-			<input type="text" name="actorId" required>
+		<div class="banner">
+		</div>
+		<div class="container">
+			<H1>Search for an Actor by ID# or Keyword</H1>
+			<form action="searchActorId.do" method="GET">
+				<label for="id">Actor's ID</label>
+				<input type="text" name="actorId" required>
+				
+				<button type="submit">Search</button>
+			</form>
+			<form action="searchActorName.do" method="GET">
+				<label for="keyword">Actor's First Or Last Name</label>
+				<input type="text" name="keyword" required>
+	
+				<button type="submit">Search</button>
+			</form>
 			
-			<button type="submit">Search</button>
-		</form>
-		<form action="searchActorName.do" method="GET">
-			<label for="keyword">Actor's First Or Last Name</label>
-			<input type="text" name="keyword" required>
-
-			<button type="submit">Search</button>
-		</form>
-		
-		<a href="index.html">Back to home</a>
+			<a href="index.html">Back to home</a>
+		</div>
 	</body>
 </html>

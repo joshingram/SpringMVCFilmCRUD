@@ -1,3 +1,14 @@
 body{
-	font-family: MSComicSans;
+	font-family: Comic Sans MS;
+	background-color: powderblue;
+}
+
+.banner{
+	background-image: url("images/sdvideologo.png");
+	padding: 60px;
+    background-size:     contain;   
+}
+
+.error{
+	color: red;
 }

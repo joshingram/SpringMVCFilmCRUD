@@ -1,16 +1,23 @@
 <html>
-<head>
-<title>Actor Creation</title>
-</head>
-<body>
-	<form action="createActor.do" method="POST">
-		<label for="firstName" required><strong>First Name</strong></label> <input
-			type="text" name="firstName"><br> 
-			
-		<label for="lastName" required><strong>Last Name</strong></label> <input type="text"
-			name="lastName"><br>
-		<button type="submit">Add to database</button>
-	</form>
-	<a href="index.html">Back to home</a>
-</body>
+	<head>
+		<title>Actor Creation</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+		<link href="style.css" rel="stylesheet">
+		<link rel="shortcut icon" link="images/sdvideologo.png">
+	</head>
+	<body>
+		<div class="banner">
+		</div>
+		<div class="container">
+			<form action="createActor.do" method="POST">
+				<label for="firstName" required><strong>First Name</strong></label> <input
+					type="text" name="firstName"><br> 
+					
+				<label for="lastName" required><strong>Last Name</strong></label> <input type="text"
+					name="lastName"><br>
+				<button type="submit">Add to database</button>
+			</form>
+			<a href="index.html">Back to home</a>
+		</div>
+	</body>
 </html>
