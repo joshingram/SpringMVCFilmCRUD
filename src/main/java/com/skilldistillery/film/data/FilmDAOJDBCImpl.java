@@ -1,5 +1,6 @@
 package com.skilldistillery.film.data;
 
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
 
 import java.sql.Connection;
@@ -604,13 +605,13 @@ public class FilmDAOJDBCImpl implements FilmDAO {
 			if (film.getRentalDuration() != 0) {
 				stmt.setInt(5, film.getRentalDuration());
 			} else {
-				stmt.setInt(5, 1);
+				stmt.setInt(5, 3);
 			}
 
 			if (film.getRentalRate() != 0) {
 				stmt.setDouble(6, film.getRentalRate());
 			} else {
-				stmt.setDouble(6, 1);
+				stmt.setDouble(6, 4.99);
 			}
 
 			if (film.getLength() != 0) {
@@ -622,7 +623,7 @@ public class FilmDAOJDBCImpl implements FilmDAO {
 			if (film.getReplacementCost() != 0) {
 				stmt.setDouble(8, film.getReplacementCost());
 			} else {
-				stmt.setInt(8, 1);
+				stmt.setDouble(8, 19.99);
 			}
 
 			if (film.getRating() != null) {
@@ -649,8 +650,6 @@ public class FilmDAOJDBCImpl implements FilmDAO {
 
 					film.setId(newFilmId);
 
-				} else {
-					film = null;
 				}
 			}
 			conn.commit(); // COMMIT TRANSACTION

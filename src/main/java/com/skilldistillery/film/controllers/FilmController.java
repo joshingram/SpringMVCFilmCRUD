@@ -199,6 +199,7 @@ public class FilmController {
 		
 
 		boolean filmAdded = false;
+		
 		if(films.get(0) != null) {
 			filmAdded = true;
 		}
@@ -213,8 +214,9 @@ public class FilmController {
 	}
 	
 	@RequestMapping(path="filmUpdated.do", method=RequestMethod.GET)
-	public ModelAndView filmUpdated(ArrayList<Film> films, boolean filmAdded, boolean successfullyDeleted) {
+	public ModelAndView filmUpdated(ArrayList<Film> films, boolean filmAdded, boolean filmSearch) {
 		ModelAndView mv = new ModelAndView();
+		
 		mv.setViewName("Film");
 		return mv;
 	}
