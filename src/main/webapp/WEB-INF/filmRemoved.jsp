@@ -12,7 +12,7 @@
 		<link rel="shortcut icon" href="images/sdvideologo.png">
 	</head>
 	<body>
-		<div class="banner">
+		<div class="banner" onclick="location.href='index.html';">
 		</div>
 		<div class="container">
 			<c:choose>
