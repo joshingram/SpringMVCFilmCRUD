@@ -14,6 +14,7 @@
 	</head>
 	<body>
 		<div class="banner">
+			<p></p>
 		</div>
 		<div class="container">
 			<c:if test="${filmSearch}">

@@ -4,9 +4,21 @@ body{
 }
 
 .banner{
-	background-image: url("images/sdvideologo.png");
+	background-color: #718F93;
+	background-image: url("images/sdvideologobanner.png");
 	padding: 60px;
     background-size:     contain;   
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.inventoryBanner{
+	background-color: powderblue;
+	background-size:     contain;   
+    position: sticky;
+    top: 120px;
+    z-index: 999;
 }
 
 .error{

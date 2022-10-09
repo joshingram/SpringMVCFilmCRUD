@@ -21,7 +21,10 @@
 					<li>No matching inventory found</li>
 				</c:when>
 				<c:otherwise>
-					<H2>All inventory for film ID# ${film.id}: ${film.title}</H2>
+					<div class="inventoryBanner">
+						<h2>All inventory for film ID# ${film.id}: ${film.title}</h2>
+						<hr>
+					</div>
 					<c:forEach items="${inventory}" var="inv">
 						<h3>Inventory ID#: ${inv.id}</h3>
 						<ul>
