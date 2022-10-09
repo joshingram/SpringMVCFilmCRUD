@@ -18,7 +18,7 @@
 		<div class="container">
 			<c:choose>
 				<c:when test="${noInventory}">
-					<li>No matching inventory found</li>
+					<li class="error">No matching inventory found</li>
 				</c:when>
 				<c:otherwise>
 					<div class="inventoryBanner">
